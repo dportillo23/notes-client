@@ -1,7 +1,9 @@
 import { useEffect } from "react";
 import { connect, ConnectedProps } from 'react-redux'
-import { RootState } from "../../store/types";
-import { getNotes } from "../../store/slices/notes/notes.actions";
+import { Box } from "@mui/material";
+import { RootState } from "store/types";
+import { getNotes } from "store/slices/notes/notes.actions";
+import { NoteCard } from "./note-card";
 
 const NotesList = ({ notesList, getNotes }: PropsFromRedux) => {
 
@@ -9,15 +11,11 @@ const NotesList = ({ notesList, getNotes }: PropsFromRedux) => {
     getNotes()
   }, [])
 
-  return notesList.map(note => {
-    return (
-      <div key={note.id}>
-        <h1>{note.title}</h1>
-        <p>{note.note}</p>
-        <span>{note.updated}</span>
-      </div>
-    )
-  })
+  return (
+    <Box display="flex" flexDirection="column" gap={2}>
+      {notesList.map(note => <NoteCard key={note.id} note={note} />)}
+    </Box>
+  )
 
 };
 
