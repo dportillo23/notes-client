@@ -2,10 +2,10 @@ import { Card, CardHeader, CardContent, Avatar, Typography } from "@mui/material
 import { Note } from "store/slices/notes/types";
 import { toFormattedLocalString } from "utils/date-utils/date-utils";
 
-interface NoteCardParams {
+interface NoteCardProps {
   note: Note;
 }
-export const NoteCard = ({ note }: NoteCardParams) => {
+export const NoteCard = ({ note }: NoteCardProps) => {
   return <Card>
     <CardHeader
       avatar={<Avatar aria-aria-label="note">
